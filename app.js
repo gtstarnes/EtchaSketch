@@ -1,6 +1,8 @@
 const container = document.querySelector('#container');
 const resetButton = document.querySelector('#reset');
 const gridSizeButton = document.querySelector('#gridSize');
+const rainbowButton = document.querySelector('#rainbow');
+let counter = 0;
 let size = gridSize();
 
 /* creates grid and boxes */
@@ -14,7 +16,12 @@ function createBox(size) {
         box.classList.add('box');
         container.appendChild(box);
         box.addEventListener('mouseover', () => {
-            box.classList.add('hover');
+           if (counter == 1) {
+            let randomColor = Math.floor(Math.random()*16777215).toString(16);
+            box.style.backgroundColor = '#' + randomColor;
+           } else {
+            box.style.backgroundColor = 'black';
+           }
         });
     }
 }
@@ -62,6 +69,19 @@ function getSize() {
 }
 
 
+/*Toggles rainbow feature on and off */
+function rainbowTime() {
+    counter++;
+    resetBox();
+    if(counter > 1) {
+        rainbowButton.style.backgroundColor = 'lightgray';
+        counter = 0;
+    } else {
+        rainbowButton.style.backgroundColor = 'gray';
+    }
+}
+
+
 /* Initial size grid */
 gridSize(16);
 
@@ -69,4 +89,6 @@ gridSize(16);
 /* Various event listeners */
 resetButton.addEventListener('click', resetBox);
 gridSizeButton.addEventListener('click', changeGridSize);
+rainbowButton.addEventListener('click', rainbowTime);
+
 
