@@ -1,0 +1,25 @@
+
+.container {
+    display: grid;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    padding: none;
+    gap: none;
+    background-color: white;
+    grid-template-columns: repeat(16, calc(100% / 16));
+    grid-template-rows: repeat(16, calc(100%/16));
+    max-width: 1400px;
+    width: 600px;
+    height: 500px;
+    margin: 10% auto;
+}
+
+.box {
+    border: 1px solid black;
+    background-color: white;
+}
+
+
+.hover {
+    background-color: black;
+}
